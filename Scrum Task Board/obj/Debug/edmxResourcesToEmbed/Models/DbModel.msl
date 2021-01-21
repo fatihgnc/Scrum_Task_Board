@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="stb_modelStoreContainer" CdmEntityContainer="DatabaseContext">
+    <EntitySetMapping Name="Card">
+      <EntityTypeMapping TypeName="stb_model.Card">
+        <MappingFragment StoreEntitySet="Card">
+          <ScalarProperty Name="cardID" ColumnName="cardID" />
+          <ScalarProperty Name="cardNo" ColumnName="cardNo" />
+          <ScalarProperty Name="cardCreationDate" ColumnName="cardCreationDate" />
+          <ScalarProperty Name="cardEstimatedTime" ColumnName="cardEstimatedTime" />
+          <ScalarProperty Name="cardActualTime" ColumnName="cardActualTime" />
+          <ScalarProperty Name="cardName" ColumnName="cardName" />
+          <ScalarProperty Name="cardDefinition" ColumnName="cardDefinition" />
+          <ScalarProperty Name="cardNotes" ColumnName="cardNotes" />
+          <ScalarProperty Name="cardExpert" ColumnName="cardExpert" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="State">
+      <EntityTypeMapping TypeName="stb_model.State">
+        <MappingFragment StoreEntitySet="State">
+          <ScalarProperty Name="stateID" ColumnName="stateID" />
+          <ScalarProperty Name="stateName" ColumnName="stateName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Task">
+      <EntityTypeMapping TypeName="stb_model.Task">
+        <MappingFragment StoreEntitySet="Task">
+          <ScalarProperty Name="taskID" ColumnName="taskID" />
+          <ScalarProperty Name="taskDate" ColumnName="taskDate" />
+          <ScalarProperty Name="taskHeader" ColumnName="taskHeader" />
+          <ScalarProperty Name="taskDefinition" ColumnName="taskDefinition" />
+          <ScalarProperty Name="taskStateID" ColumnName="taskStateID" />
+          <ScalarProperty Name="cardID" ColumnName="cardID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

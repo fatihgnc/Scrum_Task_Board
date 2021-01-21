@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="stbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblState">
+    <Key>
+      <PropertyRef Name="stateID" />
+    </Key>
+    <Property Name="stateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="stateName" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblTask" Relationship="Self.FK_tblTask_tblState" FromRole="tblState" ToRole="tblTask" />
+  </EntityType>
+  <EntityType Name="tblTask">
+    <Key>
+      <PropertyRef Name="taskID" />
+    </Key>
+    <Property Name="taskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="taskName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="taskExpert" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="taskCreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="taskCardNo" Type="Int32" Nullable="false" />
+    <Property Name="taskEstimatedTime" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="taskActualTime" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="taskExplanation" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="taskNotes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="taskStateID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblState" Relationship="Self.FK_tblTask_tblState" FromRole="tblTask" ToRole="tblState" />
+    <NavigationProperty Name="tblFollow" Relationship="Self.FK_tblFollow_tblTask" FromRole="tblTask" ToRole="tblFollow" />
+  </EntityType>
+  <EntityType Name="tblFollow">
+    <Key>
+      <PropertyRef Name="taskID" />
+      <PropertyRef Name="followTaskDate" />
+      <PropertyRef Name="followTaskState" />
+      <PropertyRef Name="followTaskExplanation" />
+    </Key>
+    <Property Name="taskID" Type="Int32" Nullable="false" />
+    <Property Name="followTaskDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="followTaskState" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="followTaskExplanation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tblTask" Relationship="Self.FK_tblFollow_tblTask" FromRole="tblFollow" ToRole="tblTask" />
+  </EntityType>
+  <Association Name="FK_tblTask_tblState">
+    <End Role="tblState" Type="Self.tblState" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblTask" Type="Self.tblTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblState">
+        <PropertyRef Name="stateID" />
+      </Principal>
+      <Dependent Role="tblTask">
+        <PropertyRef Name="taskStateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblFollow_tblTask">
+    <End Role="tblTask" Type="Self.tblTask" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblFollow" Type="Self.tblFollow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTask">
+        <PropertyRef Name="taskID" />
+      </Principal>
+      <Dependent Role="tblFollow">
+        <PropertyRef Name="taskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="stbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="tblState" EntityType="Self.tblState" />
+    <EntitySet Name="tblTask" EntityType="Self.tblTask" />
+    <EntitySet Name="tblFollow" EntityType="Self.tblFollow" />
+    <AssociationSet Name="FK_tblTask_tblState" Association="Self.FK_tblTask_tblState">
+      <End Role="tblState" EntitySet="tblState" />
+      <End Role="tblTask" EntitySet="tblTask" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblFollow_tblTask" Association="Self.FK_tblFollow_tblTask">
+      <End Role="tblTask" EntitySet="tblTask" />
+      <End Role="tblFollow" EntitySet="tblFollow" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

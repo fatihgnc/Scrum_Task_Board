@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="stbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ysodev.dbo.tblFollow' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblFollow">
+    <Key>
+      <PropertyRef Name="taskID" />
+      <PropertyRef Name="followTaskDate" />
+      <PropertyRef Name="followTaskState" />
+      <PropertyRef Name="followTaskExplanation" />
+    </Key>
+    <Property Name="taskID" Type="int" Nullable="false" />
+    <Property Name="followTaskDate" Type="datetime" Nullable="false" />
+    <Property Name="followTaskState" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="followTaskExplanation" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblState">
+    <Key>
+      <PropertyRef Name="stateID" />
+    </Key>
+    <Property Name="stateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="stateName" Type="varchar" MaxLength="11" />
+  </EntityType>
+  <EntityType Name="tblTask">
+    <Key>
+      <PropertyRef Name="taskID" />
+    </Key>
+    <Property Name="taskID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="taskName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="taskExpert" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="taskCreationDate" Type="datetime" Nullable="false" />
+    <Property Name="taskCardNo" Type="int" Nullable="false" />
+    <Property Name="taskEstimatedTime" Type="varchar" MaxLength="12" />
+    <Property Name="taskActualTime" Type="varchar" MaxLength="12" />
+    <Property Name="taskExplanation" Type="nvarchar" MaxLength="200" />
+    <Property Name="taskNotes" Type="nvarchar" MaxLength="100" />
+    <Property Name="taskStateID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_tblFollow_tblTask">
+    <End Role="tblTask" Type="Self.tblTask" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblFollow" Type="Self.tblFollow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTask">
+        <PropertyRef Name="taskID" />
+      </Principal>
+      <Dependent Role="tblFollow">
+        <PropertyRef Name="taskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTask_tblState">
+    <End Role="tblState" Type="Self.tblState" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblTask" Type="Self.tblTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblState">
+        <PropertyRef Name="stateID" />
+      </Principal>
+      <Dependent Role="tblTask">
+        <PropertyRef Name="taskStateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="stbModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblState" EntityType="Self.tblState" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTask" EntityType="Self.tblTask" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFollow" EntityType="Self.tblFollow" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblFollow].[taskID] AS [taskID], 
+    [tblFollow].[followTaskDate] AS [followTaskDate], 
+    [tblFollow].[followTaskState] AS [followTaskState], 
+    [tblFollow].[followTaskExplanation] AS [followTaskExplanation]
+    FROM [dbo].[tblFollow] AS [tblFollow]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_tblFollow_tblTask" Association="Self.FK_tblFollow_tblTask">
+      <End Role="tblTask" EntitySet="tblTask" />
+      <End Role="tblFollow" EntitySet="tblFollow" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTask_tblState" Association="Self.FK_tblTask_tblState">
+      <End Role="tblState" EntitySet="tblState" />
+      <End Role="tblTask" EntitySet="tblTask" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

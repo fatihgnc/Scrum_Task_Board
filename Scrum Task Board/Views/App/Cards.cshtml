@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Scrum_Task_Board.Models.Card>
+
+@{
+    ViewBag.Title = "Kartlar";
+}
+
+<div class="container">
+    <h2 class="mt-4">Kartlar</h2>
+</div>
+<hr />
+
+
+@if (Model.Count() == 0)
+{
+    <span class="alert alert-info d-block">Henüz hiçbir kart eklememişsiniz. Aşağıdaki butona basarak hemen yeni bir kart ekleyebilirsiniz!</span>
+}
+else
+{
+<div class="container mt-3">
+    @foreach (var card in Model)
+    {
+        <details class="border border-dark shadow mb-2">
+            <!-- kart header kısmı -->
+            <summary class="p-2 d-flex justify-content-around align-items-center" style="outline:none;">
+                <b class="text-center" style="flex: 1;" title="Kart ID">@card.cardID</b>
+                <b class=" ml-2 text-truncate text-center" style="flex: 1;" title="@card.cardName">@card.cardName</b>
+                <b class=" ml-2 text-center" style="flex: 1;" title="tarih">@card.cardCreationDate</b>
+                <div class="ml-5 text-center d-flex flex-column" style="flex: 1; gap:.2em;">
+                    @Html.ActionLink("Detay", "CardDetail", "Card", new { cardID = card.cardID }, new { @class = "btn btn-primary btn-sm", id="cardDetail" + card.cardID })
+                    @Html.ActionLink("Düzenle", "Edit", "Card", new { cardID = card.cardID }, new { @class = "btn btn-secondary btn-sm", id="cardEdit" + card.cardID })
+                    @Html.ActionLink("Sil", "Delete", "Card", new { cardID = card.cardID }, new { @class = "btn btn-danger btn-sm" })
+                </div>
+            </summary>
+            <!-- kart içerik kısmı -->
+            <div style="border-top: thin solid black;">
+                <div class="p-3 d-flex flex-column">
+                    <p><b>Kart No: </b>@card.cardNo</p>
+                    <p><b>Kart açıklaması: </b> @card.cardDefinition</p>
+                    <p><b>Kart notları: </b>@card.cardNotes</p>
+                    <p><b>Tahmini bitirme süresi: </b>@card.cardEstimatedTime</p>
+                    <p><b>Gerçekleşen bitirme süresi: </b>@card.cardActualTime</p>
+                    <p><b>Kart uzmanı: </b>@card.cardExpert</p>
+                    @Html.ActionLink("İş Ekle", "Add", "Task", new { cardID = card.cardID }, new { @class = "btn btn-dark" })
+                </div>
+            </div>
+        </details>
+    }
+</div>
+}
+<div class="container">
+    @Html.ActionLink("Yeni Kart Ekle", "Add", "Card", null, new { @class = "btn btn-primary mt-3 ml-3", id = "newCard" })
+    @if (Model.Count() > 1)
+    {
+        @Html.ActionLink("Tüm Kartları Sil", "DeleteAll", "Card", null, new { @class = "btn btn-danger mt-3 ml-2" })
+    }
+</div>
+
+
+
+
+
+

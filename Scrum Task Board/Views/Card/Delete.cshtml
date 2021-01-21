@@ -1,0 +1,87 @@
+﻿@model Scrum_Task_Board.Models.Card
+
+@{
+    ViewBag.Title = "Kart Sil";
+}
+
+
+<div class="container">
+    <h2 class="mt-5">Kart Sil</h2>
+    <hr />
+    <p class="ml-4" style="font-weight: 400; font-size:1.2em;">Aşağıdaki kartı silmek istiyor musunuz?</p>
+</div>
+
+<div class="container shadow-sm">
+    <div class="w-100 p-3">
+        <!-- başlık -->
+        <div class="d-flex justify-content-around row">
+            <p class="display-4">gencSoftware</p>
+            <p class="display-4">NİTELİK KART</p>
+        </div>
+        <hr />
+        <div class="d-flex justify-content-around row">
+            <div style="width: 33%;">
+                <!-- kart adı ve uzman -->
+                <div class="form-group">
+                    <label for="cardName">Kart adı/no: </label>
+                    @Html.TextBoxFor(card => card.cardName, new { @class = "form-control", id = "cardName", @readonly = "readonly" })
+                </div>
+
+                <div class="form-group">
+                    <label for="cardExpert">Kart Uzmanı: </label>
+                    @Html.TextBoxFor(card => card.cardExpert, new { @class = "form-control", id = "cardExpert", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div style="width: 33%;">
+                <!-- süre kısmı -->
+                <div class="form-group">
+                    <label for="estimatedTime">Tahmini süre: </label>
+                    @Html.TextBoxFor(card => card.cardEstimatedTime, new { @class = "form-control", id = "estimatedTime", @readonly = "readonly" })
+                </div>
+
+                <div class="form-group">
+                    <label for="actualTime">Gerçekleşen süre: </label>
+                    @Html.TextBoxFor(card => card.cardActualTime, new { @class = "form-control", id = "actualTime", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div style="width: 33%;">
+                <!-- tarih ve kart no -->
+                <div class="form-group">
+                    <label for="creationDate">Oluşturulma tarihi: </label>
+                    @Html.TextBoxFor(card => card.cardCreationDate, new { @class = "form-control", id = "creationDate", @readonly = "readonly" })
+                </div>
+
+                <div class="form-group">
+                    <label for="cardNo">Kart No: </label>
+                    @Html.TextBoxFor(card => card.cardNo, new { @class = "form-control", id = "cardNo", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex flex-column row">
+            <!-- açıklama ve notlar -->
+            <div class="form-group">
+                <label for="cardExplanation">Kart açıklaması: </label>
+                @Html.TextAreaFor(card => card.cardDefinition, new { @class = "form-control", id = "cardDefinition", @readonly = "readonly", rows = "5" })
+            </div>
+
+            <div class="form-group">
+                <label for="cardNotes">Kart notları: </label>
+                @Html.TextAreaFor(card => card.cardNotes, new { @class = "form-control", id = "cardNotes", @readonly = "readonly", rows = "5" })
+            </div>
+        </div>
+    </div>
+    
+    @using (Html.BeginForm())
+    {
+        <div class="input-group mb-4">
+            <input class="btn btn-danger w-100" type="submit" value="Sil" />
+        </div>
+    }
+
+</div>
+
+
+

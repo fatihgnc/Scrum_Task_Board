@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="stb_model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Card">
+          <Key>
+            <PropertyRef Name="cardID" />
+          </Key>
+          <Property Name="cardID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cardNo" Type="int" Nullable="false" />
+          <Property Name="cardCreationDate" Type="datetime" Nullable="false" />
+          <Property Name="cardEstimatedTime" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="cardActualTime" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="cardName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cardDefinition" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="cardNotes" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="cardExpert" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="stateID" />
+          </Key>
+          <Property Name="stateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stateName" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="taskID" />
+          </Key>
+          <Property Name="taskID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="taskDate" Type="datetime" Nullable="false" />
+          <Property Name="taskHeader" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="taskDefinition" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="taskStateID" Type="int" Nullable="false" />
+          <Property Name="cardID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Task_Card">
+          <End Role="Card" Type="Self.Card" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Card">
+              <PropertyRef Name="cardID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="cardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_State">
+          <End Role="State" Type="Self.State" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="stateID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="taskStateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="stb_modelStoreContainer">
+          <EntitySet Name="Card" EntityType="Self.Card" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Task_Card" Association="Self.FK_Task_Card">
+            <End Role="Card" EntitySet="Card" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_State" Association="Self.FK_Task_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="stb_model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Card">
+          <Key>
+            <PropertyRef Name="cardID" />
+          </Key>
+          <Property Name="cardID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cardNo" Type="Int32" Nullable="false" />
+          <Property Name="cardCreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cardEstimatedTime" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cardActualTime" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cardName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cardDefinition" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cardNotes" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cardExpert" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Task_Card" FromRole="Card" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="stateID" />
+          </Key>
+          <Property Name="stateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stateName" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Task_State" FromRole="State" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="taskID" />
+          </Key>
+          <Property Name="taskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="taskDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="taskHeader" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="taskDefinition" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="taskStateID" Type="Int32" Nullable="false" />
+          <Property Name="cardID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Card" Relationship="Self.FK_Task_Card" FromRole="Task" ToRole="Card" />
+          <NavigationProperty Name="State" Relationship="Self.FK_Task_State" FromRole="Task" ToRole="State" />
+        </EntityType>
+        <Association Name="FK_Task_Card">
+          <End Role="Card" Type="Self.Card" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Card">
+              <PropertyRef Name="cardID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="cardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_State">
+          <End Role="State" Type="Self.State" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="stateID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="taskStateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabaseContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Card" EntityType="Self.Card" />
+          <EntitySet Name="State" EntityType="Self.State" />
+          <EntitySet Name="Task" EntityType="Self.Task" />
+          <AssociationSet Name="FK_Task_Card" Association="Self.FK_Task_Card">
+            <End Role="Card" EntitySet="Card" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_State" Association="Self.FK_Task_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="stb_modelStoreContainer" CdmEntityContainer="DatabaseContext">
+          <EntitySetMapping Name="Card">
+            <EntityTypeMapping TypeName="stb_model.Card">
+              <MappingFragment StoreEntitySet="Card">
+                <ScalarProperty Name="cardID" ColumnName="cardID" />
+                <ScalarProperty Name="cardNo" ColumnName="cardNo" />
+                <ScalarProperty Name="cardCreationDate" ColumnName="cardCreationDate" />
+                <ScalarProperty Name="cardEstimatedTime" ColumnName="cardEstimatedTime" />
+                <ScalarProperty Name="cardActualTime" ColumnName="cardActualTime" />
+                <ScalarProperty Name="cardName" ColumnName="cardName" />
+                <ScalarProperty Name="cardDefinition" ColumnName="cardDefinition" />
+                <ScalarProperty Name="cardNotes" ColumnName="cardNotes" />
+                <ScalarProperty Name="cardExpert" ColumnName="cardExpert" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="State">
+            <EntityTypeMapping TypeName="stb_model.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="stateID" ColumnName="stateID" />
+                <ScalarProperty Name="stateName" ColumnName="stateName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Task">
+            <EntityTypeMapping TypeName="stb_model.Task">
+              <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="taskID" ColumnName="taskID" />
+                <ScalarProperty Name="taskDate" ColumnName="taskDate" />
+                <ScalarProperty Name="taskHeader" ColumnName="taskHeader" />
+                <ScalarProperty Name="taskDefinition" ColumnName="taskDefinition" />
+                <ScalarProperty Name="taskStateID" ColumnName="taskStateID" />
+                <ScalarProperty Name="cardID" ColumnName="cardID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

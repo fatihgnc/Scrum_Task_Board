@@ -1,0 +1,101 @@
+﻿@model Scrum_Task_Board.Models.Card
+
+@{
+    ViewBag.Title = "Kart Ekle";
+    DateTime myDateTime = DateTime.Now;
+    string sqlFormat = myDateTime.ToString("yyyy-MM-dd HH:mm:ss");
+
+    string[] saatGunAy = new string[4];
+
+    saatGunAy[0] = "saat";
+    saatGunAy[1] = "gün";
+    saatGunAy[2] = "ay";
+    saatGunAy[3] = "hafta";
+
+    // estimated time için
+    Random rnd = new Random();
+    Random rnd2 = new Random();
+
+    int num = rnd.Next(1, 9);
+    int randomIndex = rnd2.Next(0, 4);
+
+    // actual time için
+    Random rnd3 = new Random();
+    Random rnd4 = new Random();
+
+    int num2 = rnd3.Next(5, 12);
+    int randomIndex2 = rnd4.Next(0, 4);
+}
+
+
+<h2 class="text-capitalize mt-4">Kart Ekle</h2>
+<hr />
+<!-- form -->
+<div class="container">
+    @using (Html.BeginForm("Add", "Card", FormMethod.Post, new { id = "add-form" }))
+    {
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <!-- başlık -->
+        <div class="d-flex justify-content-around row">
+            <p class="display-4">gencSoftware</p>
+            <p class="display-4">NİTELİK KART</p>
+        </div>
+        <hr />
+        <div class="d-flex row" style="gap: .5em;">
+            <div style="width: 48%;">
+                <!-- kart adı ve uzman -->
+                <div class="form-group">
+                    <label for="cardName">Kart adı/no: </label>
+                    @Html.TextBoxFor(card => card.cardName, new { @class = "form-control", id = "cardName", required = "required", @type = "text" })
+                </div>
+
+                <div class="form-group">
+                    <label for="cardExpert">Kart Uzmanı: </label>
+                    @Html.TextBoxFor(card => card.cardExpert, new { @class = "form-control", id = "cardExpert", required = "required", @type = "text", onkeypress = "return /[a-zA-Zığüşöç\\.\\,\\!\\-; ]/i.test(event.key)" })
+                </div>
+            </div>
+
+            <div style="width: 50%;">
+                <!-- tarih ve kart no -->
+                <div class="form-group">
+                    <label for="creationDate">Oluşturulma tarihi: </label>
+                    @Html.TextBoxFor(card => card.cardCreationDate, new { @class = "form-control", id = "creationDate", @readonly = "readonly", @Value = sqlFormat })
+                </div>
+
+                <div class="form-group">
+                    <label for="cardNo">Kart No: </label>
+                    @Html.TextBoxFor(card => card.cardNo, new { @class = "form-control", id = "cardNo", required = "required", @type = "number" })
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex flex-column row">
+            <!-- açıklama ve notlar -->
+            <div class="form-group">
+                <label for="cardExplanation">Kart açıklaması: </label>
+                @Html.TextAreaFor(card => card.cardDefinition, new { @class = "form-control", id = "cardDefinition", rows = "5", required = "required", @type = "text", onkeypress = "return /[a-zA-Z0-9ığüşöç\\.\\,\\!\\-; ]/i.test(event.key)" })
+            </div>
+
+            <div class="form-group">
+                <label for="cardNotes">Kart notları: </label>
+                @Html.TextAreaFor(card => card.cardNotes, new { @class = "form-control", id = "cardNotes", rows = "5", required = "required", @type = "text", onkeypress = "return /[a-zA-Z0-9ığüşöç\\.\\,\\!\\-; ]/i.test(event.key)" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(card => card.cardEstimatedTime, new { @class = "form-control", id = "estimatedTime", @Value = (num + " " + saatGunAy[randomIndex]), @readonly = "readonly" })
+
+        @Html.HiddenFor(card => card.cardActualTime, new { @class = "form-control", id = "actualTime", @Value = (num2 + " " + saatGunAy[randomIndex2]), @readonly = "readonly" })
+
+        <div class="input-group row">
+            <input class="btn btn-success w-100 mt-2" id="submit" type="submit" value="Ekle" />
+        </div>
+
+        <div class="mt-3 row">
+            @if (ViewBag.Message != null)
+            {
+                <span class="alert @ViewBag.Alert" id="addAlert">@ViewBag.Message</span>
+            }
+        </div>
+    }
+</div>

@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Scrum Task Board";
+}
+
+<div class="container">
+    <p class="lead text-white"><strong>Scrum Task Board</strong> uygulaması, işlerinizi oluşturmak ve onları takip etmenizde size yardımcı olmak için oluşturulan bir uygulamadır.</p>
+    <hr style="border: thin solid white;" />
+
+    <ul class="list-group">
+        <li class="list-group-item bg-danger text-white">Uygulama Başlıkları</li>
+        <li class="list-group-item bg-dark text-warning">Bu uygulamayla, kart oluşturup içine istediğiniz kadar iş ekleyerek yapacaklarınızı kolaylıkla takip edebileceksiniz.</li>
+        <li class="list-group-item bg-dark text-warning">İşlerinizi 4 kısıma bölerek uygulamamızı daha efektif bir şekilde kullanabilirsiniz(To Do, In-Progress, Test, Done)</li>
+        <li class="list-group-item bg-dark text-warning">Girdiğiniz işe göre uygulama otomatik olarak bir bitiş süresi tahmininde bulunacaktır.</li>
+        <li class="list-group-item bg-dark text-warning">İstediğiniz zaman onları güncelleyebilirsiniz.</li>
+        <li class="list-group-item bg-dark text-warning">İstediğiniz zaman onları silebilirsiniz.</li>
+        <li class="list-group-item bg-dark text-warning">İstediğiniz kadar kart ve kartların içine istediğiniz kadar iş ekleyebilirsiniz.</li>
+    </ul>
+    <p>@Html.ActionLink("Uygulamaya git!", "Cards", null, new { @class = "btn btn-danger btn-md mt-3 text-white", id="goToApp" })</p>
+
+</div>

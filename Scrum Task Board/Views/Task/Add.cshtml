@@ -1,0 +1,60 @@
+﻿@using Scrum_Task_Board.Models
+@model Task
+
+@{
+    ViewBag.Title = "İş Ekle";
+}
+
+<h2>İş Ekle</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <label for="taskHeader">İş Başlığı :</label>
+        @Html.TextAreaFor(model => model.taskHeader, new { @class = "form-control", id = "taskHeader", required = "required", @type = "text", onkeypress = "return /[a-zA-Z0-9ığüşöç\\.\\,\\!\\-; ]/i.test(event.key)", rows = 3 })
+        @Html.ValidationMessageFor(model => model.taskHeader, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="taskDefinition">İş İçeriği :</label>
+        @Html.TextAreaFor(model => model.taskDefinition, new { @class = "form-control", id = "taskDefinition", required = "required", @type = "text", onkeypress = "return /[a-zA-Z0-9ığüşöç\\.\\,\\!\\-; ]/i.test(event.key)", rows = 5 })
+        @Html.ValidationMessageFor(model => model.taskDefinition, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="taskDate">İş Tarihi (Format -> 2021-01-01 22:00:00 şeklinde olmalı):</label>
+        @Html.TextBoxFor(model => model.taskDate, new { @class = "form-control", id = "taskDate", required = "required", @type = "datetime", placeholder = "yyyy-mm-dd hh:mm:ss" })
+        @Html.ValidationMessageFor(model => model.taskDate, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="taskState">İş durumu :</label>
+        @Html.DropDownListFor(model => model.taskStateID, (List<SelectListItem>)ViewBag.states, new { @class = "form-control", id = "taskState" })
+    </div>
+
+    <div class="form-group">
+        <label for="taskCard">Bağlı olduğu kart ID'si :</label>
+        @Html.TextBoxFor(model => model.cardID, new { @class = "form-control", id = "taskCard", @readonly = "readonly", @Value = ViewBag.cardID })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Ekle" id="submit" class="btn btn-success w-100" />
+    </div>
+
+    <div class="form-group">
+        @Html.ActionLink("Kart Detaya Dön", "CardDetail", "Card", new { cardID = Session["cardID"] }, new { @class="btn btn-danger"})
+    </div>
+
+    <div class="mt-3 ml-1 row">
+        @if (ViewBag.Message != null)
+        {
+            <span class="alert @ViewBag.Alert" id="addAlert">@ViewBag.Message</span>
+        }
+    </div>
+}
+
+
+

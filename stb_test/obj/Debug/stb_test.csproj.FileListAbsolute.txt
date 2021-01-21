@@ -1,0 +1,16 @@
+C:\Users\Fatih\source\repos\scrum task board\stb_test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Fatih\source\repos\scrum task board\stb_test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Fatih\source\repos\scrum task board\stb_test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Fatih\source\repos\scrum task board\stb_test\bin\Debug\stb_test.dll
+C:\Users\Fatih\source\repos\scrum task board\stb_test\bin\Debug\stb_test.pdb
+C:\Users\Fatih\source\repos\scrum task board\stb_test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Fatih\source\repos\scrum task board\stb_test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Fatih\source\repos\scrum task board\stb_test\bin\Debug\WebDriver.dll
+C:\Users\Fatih\source\repos\scrum task board\stb_test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Fatih\source\repos\scrum task board\stb_test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Fatih\source\repos\scrum task board\stb_test\bin\Debug\WebDriver.xml
+C:\Users\Fatih\source\repos\scrum task board\stb_test\obj\Debug\stb_test.csprojAssemblyReference.cache
+C:\Users\Fatih\source\repos\scrum task board\stb_test\obj\Debug\stb_test.csproj.CoreCompileInputs.cache
+C:\Users\Fatih\source\repos\scrum task board\stb_test\obj\Debug\stb_test.csproj.CopyComplete
+C:\Users\Fatih\source\repos\scrum task board\stb_test\obj\Debug\stb_test.dll
+C:\Users\Fatih\source\repos\scrum task board\stb_test\obj\Debug\stb_test.pdb

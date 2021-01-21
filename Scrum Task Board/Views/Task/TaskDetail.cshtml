@@ -1,0 +1,35 @@
+﻿@model Scrum_Task_Board.Models.Task
+
+@{
+    ViewBag.Title = "İş Detayları";
+}
+
+<div class="container-fluid my-4 ml-3">
+    <h2>İş Detayı</h2>
+    <p class="lead ml-4"> Bu sayfada seçtiğiniz işin detaylarına göz gezdirebilir, ayrıca işiniz üzerinde işlemler yapabilirsiniz.</p>
+</div>
+
+
+<div class="container p-2">
+    <div class="col-12">
+        <div class="card" style="background: rgba(255, 255, 255, .45)">
+            <div class="card-body">
+                <h4 class="card-title" title="İş başlığı - İş tarihi"><b>@(Model.taskHeader + " - " + Model.taskDate)</b></h4>
+                <hr />
+                <div class="p-3">
+                    <p class="card-text"><b>İş ID: </b> @Model.taskID</p>
+                    <p class="card-text"><b>İş açıklaması: </b> @Model.taskDefinition</p>
+                    <p class="card-text"><b>İş durumu: </b> @Model.State.stateName</p>
+                    <div class="d-flex flex-column" style="gap: .5em;">
+                        @Html.ActionLink("Düzenle", "Edit", "Task", new { taskID = Model.taskID }, new { @class = "btn btn-info w-50" })
+                        @Html.ActionLink("Sil", "Delete", "Task", new { taskID = Model.taskID }, new { @class = "btn btn-danger w-50" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    @Html.ActionLink("Kart Detaya Dön", "CardDetail", "Card", new { cardID = Session["cardID"] }, new { @class = "btn btn-light w-25 ml-2" })
+</div>

@@ -1,0 +1,64 @@
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\Scrum Task Board.dll.config
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\Scrum Task Board.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\Scrum Task Board.pdb
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\csc.exe
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\csc.exe.config
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\csc.rsp
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\csi.exe
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\csi.exe.config
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\csi.rsp
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\System.Buffers.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\System.Memory.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\System.Numerics.Vectors.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\vbc.exe
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\vbc.exe.config
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\vbc.rsp
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\VBCSCompiler.exe
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\Antlr3.Runtime.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\Newtonsoft.Json.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\System.Web.Helpers.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\System.Web.Mvc.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\System.Web.Optimization.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\System.Web.Razor.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\System.Web.WebPages.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\System.Web.WebPages.Razor.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\WebGrease.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\Newtonsoft.Json.xml
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\System.Web.Helpers.xml
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\System.Web.Mvc.xml
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\System.Web.Optimization.xml
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\System.Web.Razor.xml
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\System.Web.WebPages.xml
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\System.Web.WebPages.Razor.xml
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\bin\Antlr3.Runtime.pdb
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\obj\Debug\Scrum Task Board.csproj.CoreCompileInputs.cache
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\obj\Debug\Scrum Task Board.csproj.CopyComplete
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\obj\Debug\Scrum Task Board.dll
+C:\Users\Fatih\source\repos\Scrum Task Board\Scrum Task Board\obj\Debug\Scrum Task Board.pdb
+C:\Users\Fatih\source\repos\scrum task board\Scrum Task Board\bin\EntityFramework.dll
+C:\Users\Fatih\source\repos\scrum task board\Scrum Task Board\bin\EntityFramework.SqlServer.dll
+C:\Users\Fatih\source\repos\scrum task board\Scrum Task Board\bin\EntityFramework.xml
+C:\Users\Fatih\source\repos\scrum task board\Scrum Task Board\bin\EntityFramework.SqlServer.xml
+C:\Users\Fatih\source\repos\scrum task board\Scrum Task Board\obj\Debug\Scrum Task Board.csprojAssemblyReference.cache
